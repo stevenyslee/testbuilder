@@ -41,8 +41,8 @@ describe('Introduction to Mocha Tests - READ ME FIRST', function() {
     }
   });
 });
+
 describe('Diner\'s Club', function() {
-  // Be careful, tests can have bugs too...
 
   it('has a prefix of 38 and a length of 14', function() { 
     if (detectNetwork('38345678901234') !== 'Diner\'s Club') {
@@ -139,6 +139,8 @@ describe('MasterCard', function() {
 describe('Discover', function() {
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
+
+  // Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
   it('has a prefix of 6011 and a length of 16', function(){
     expect(detectNetwork('6011123456789012')).to.equal('Discover');
   });
@@ -146,10 +148,25 @@ describe('Discover', function() {
   it('has a prefix of 6011 and a length of 19', function(){
     detectNetwork('6011123456789012345').should.equal('Discover');
   });
+
+  for (var prefix = 644; prefix <= 649; prefix++ ) {
+    (function(prefix) {
+      it('has a prefix of ' + prefix + ' and a length of 16', function(){
+        detectNetwork(prefix + '1234567890123').should.equal('Discover');
+      });
+      it('has a prefix of ' + prefix + ' and a length of 19', function(){
+        detectNetwork(prefix + '1234567890123456').should.equal('Discover');
+      });
+    })(prefix)
+}
+
+
 });
 
 describe('Maestro', function() {
   // Write full test coverage for the Maestro card
+
+  // Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
   it('has a prefix of 5018 and a length of 12', function(){
     expect(detectNetwork('501812345678')).to.equal('Maestro');
   });
