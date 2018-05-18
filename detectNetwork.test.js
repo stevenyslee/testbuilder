@@ -33,7 +33,7 @@ describe('Introduction to Mocha Tests - READ ME FIRST', function() {
   // A test should only fail if the expected behavior doesn't match the actual.
   it('Throws an error when expected behavior does not match actual behavior', function() {
     var even = function(num){
-      return num/2 === 0;
+      return num%2 === 0;
     }
 
     if(even(10) !== true) {
@@ -165,7 +165,7 @@ describe('Maestro', function() {
   it('has a prefix of 6304 and a length of 15', function (){
     detectNetwork('630412345678901').should.equal('Maestro');
   });
-  
+
 });
 
 describe('should support China UnionPay')
