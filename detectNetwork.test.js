@@ -140,7 +140,7 @@ describe('Discover', function() {
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
   it('has a prefix of 6011 and a length of 16', function(){
-    expect(detectNetwork('6011123456789012').to.equal('Discover');
+    expect(detectNetwork('6011123456789012')).to.equal('Discover');
   });
 
   it('has a prefix of 6011 and a length of 19', function(){
@@ -151,8 +151,21 @@ describe('Discover', function() {
 describe('Maestro', function() {
   // Write full test coverage for the Maestro card
   it('has a prefix of 5018 and a length of 12', function(){
-    expect(detectNetwork)
-  })
+    expect(detectNetwork('501812345678')).to.equal('Maestro');
+  });
+
+  it('has a prefix of 5020 and a length of 13', function(){
+    expect(detectNetwork('50201123456789')).to.equal('Maestro');
+  });
+
+  it('has a prefix of 5038 and a length of 14', function(){
+    detectNetwork('50381234567890').should.equal('Maestro');
+  });
+
+  it('has a prefix of 6304 and a length of 15', function (){
+    detectNetwork('630412345678901').should.equal('Maestro');
+  });
+  
 });
 
 describe('should support China UnionPay')
