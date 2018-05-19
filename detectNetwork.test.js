@@ -103,7 +103,7 @@ describe('MasterCard', function() {
   // Expect syntax is one way to do this, but there are others. 
   // If you want to know more, check out the documentation. 
   //   http://chaijs.com/api/bdd/
-  var expect = chai.expect();
+  var expect = chai.expect;
  
   it('has a prefix of 51 and a length of 16', function() {
     expect(detectNetwork('5112345678901234')).to.equal('MasterCard');
@@ -140,7 +140,7 @@ describe('MasterCard', function() {
 describe('Discover', function() {
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
-  var expect = chai.expect();
+  var expect = chai.expect;
   // Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
   it('has a prefix of 6011 and a length of 16', function() {
     expect(detectNetwork('6011123456789012')).to.equal('Discover');
@@ -163,7 +163,7 @@ describe('Discover', function() {
 });
 
 describe('Maestro', function() {
-  var expect = chai.expect();
+  var expect = chai.expect;
   var should = chai.should();
   // Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
   it('has a prefix of 5018 and a length of 12', function(){
