@@ -1,0 +1,22 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "detectNetwork.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevenyslee/hrsf98-testbuilder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stevenyslee/hrsf98-testbuilder/issues"
+  },
+  "homepage": "https://github.com/stevenyslee/hrsf98-testbuilder#readme",
+  "dependencies": {
+    "debug": "^3.1.0"
+  }
+}
