@@ -150,15 +150,15 @@ describe('Discover', function() {
     expect(detectNetwork('6011123456789012345')).to.equal('Discover');
   });
 
-  // for (var prefix = 644; prefix <= 649; prefix++ ) {
-  //   it('has a prefix of ' + prefix + ' and a length of 16', function(){
-  //     detectNetwork(prefix + '1234567890123').should.equal('Discover');
-  //   });
-  //   it('has a prefix of ' + prefix + ' and a length of 19', function(){
-  //     detectNetwork(prefix + '1234567890123456').should.equal('Discover');
-  //   });
-  // }
-
+  for (var prefix = 644; prefix <= 649; prefix++ ) {
+    it('has a prefix of ' + prefix + ' and a length of 16', function(){
+      expect(detectNetwork(prefix + '1234567890123')).to.equal('Discover');
+    });
+    
+    it('has a prefix of ' + prefix + ' and a length of 19', function(){
+      expect(detectNetwork(prefix + '1234567890123456')).to.equal('Discover');
+    });
+  }
 
 });
 
