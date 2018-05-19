@@ -82,7 +82,7 @@ describe('Visa', function() {
   // Chai provides an assert that acts the same as our previous assert.
   // Search the documentation to figure out how to access it. 
   //   http://chaijs.com/
-  var assert = chai.isTrue();
+  var assert = chai.assert;
 
   it('has a prefix of 4 and a length of 13', function() {
     assert(detectNetwork('4123456789012') === 'Visa');
@@ -154,7 +154,7 @@ describe('Discover', function() {
     it('has a prefix of ' + prefix + ' and a length of 16', function(){
       expect(detectNetwork(prefix + '1234567890123')).to.equal('Discover');
     });
-    
+
     it('has a prefix of ' + prefix + ' and a length of 19', function(){
       expect(detectNetwork(prefix + '1234567890123456')).to.equal('Discover');
     });
@@ -163,7 +163,6 @@ describe('Discover', function() {
 });
 
 describe('Maestro', function() {
-  // Write full test coverage for the Maestro card
   var expect = chai.expect();
   var should = chai.should();
   // Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
