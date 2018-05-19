@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/stevenyslee/hrsf98-testbuilder#readme",
   "dependencies": {
+    "chai": "^4.1.2",
     "debug": "^3.1.0"
   }
 }
