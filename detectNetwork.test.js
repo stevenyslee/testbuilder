@@ -151,14 +151,31 @@ describe('Discover', function() {
   });
 
   for (var prefix = 644; prefix <= 649; prefix++ ) {
-    it('has a prefix of ' + prefix + ' and a length of 16', function(){
+    (function(prefix){
+          it('has a prefix of ' + prefix + ' and a length of 16', function(){
       expect(detectNetwork(prefix + '1234567890123')).to.equal('Discover');
     });
 
     it('has a prefix of ' + prefix + ' and a length of 19', function(){
       expect(detectNetwork(prefix + '1234567890123456')).to.equal('Discover');
     });
+  })(prefix)
+
+    // it('has a prefix of ' + prefix + ' and a length of 16', function(){
+    //   expect(detectNetwork(prefix + '1234567890123')).to.equal('Discover');
+    // });
+
+    // it('has a prefix of ' + prefix + ' and a length of 19', function(){
+    //   expect(detectNetwork(prefix + '1234567890123456')).to.equal('Discover');
+    // });
   }
+
+//   for (var prefix = 644; prefix <= 649; prefix++) {
+//   (function(prefix) {
+//     it('has a prefix of ' + prefix + ' and a length of 16');
+//     it('has a prefix of ' + prefix + ' and a length of 19');
+//   })(prefix)
+// }
 
 });
 
