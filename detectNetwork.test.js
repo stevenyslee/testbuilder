@@ -141,6 +141,8 @@ describe('Discover', function() {
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
   // Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
+  var should = chai.should();
+
   it('has a prefix of 65 and a length of 16', function(){
     detectNetwork('6512345678901234').should.equal('Discover');
   });
@@ -203,7 +205,7 @@ describe('Maestro', function() {
 
 
 
-describe('should support China UnionPay'){
+describe('should support China UnionPay',function(){
   // China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
   for( let i = 622126; i <= 622925; i++ ){
     let lengthPad = '123456789';
@@ -241,9 +243,9 @@ describe('should support China UnionPay'){
     }
   }
 
-}
-describe('should support Switch'){
+});
+describe('should support Switch',function(){  
   // Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
   // Heads up! Switch and Visa seem to have some overlapping card numbers - in any apparent conflict, you should choose the network with the longer prefix.
 
-}
+});
