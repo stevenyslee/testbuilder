@@ -125,7 +125,8 @@ describe('MasterCard', function() {
   // and should, but that's just for learning), so once you've gotten 
   // these tests to pass using should syntax, refactor your tests to 
   // use either expect or should, but not both. 
-  
+  let expect = chai.expect;
+
   it('has a prefix of 54 and a length of 16', function() {
     detectNetwork('5412345678901234').should.equal('MasterCard');
   });
@@ -139,7 +140,6 @@ describe('MasterCard', function() {
 describe('Discover', function() {
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
-  let expect = chai.expect;
   // Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
   it('has a prefix of 65 and a length of 16', function(){
     detectNetwork('6512345678901234').should.equal('Discover');
@@ -172,7 +172,6 @@ describe('Discover', function() {
 });
 
 describe('Maestro', function() {
-  var expect = chai.expect;
   let lengthPad = '';
   // Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
   // console.log('test Maestro');
@@ -202,5 +201,49 @@ describe('Maestro', function() {
 
 });
 
-describe('should support China UnionPay')
-describe('should support Switch')
+
+
+describe('should support China UnionPay'){
+  // China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
+  for( let i = 622126; i <= 622925; i++ ){
+    let lengthPad = '123456789';
+    for( let j = 10; j <= 13; j++ ){
+      lengthPad += '0';
+      (function(i, lengthPad){
+        it('has a prefix of ' + i + ' and a length of ' + (6 + j), function(){
+          detectNetwork(i + lengthPad).should.equal('China UnionPay');
+        })(i, lengthPad);
+      })
+    }
+  }
+
+  for( let i = 624; i <= 626; i++ ){
+    let lengthPad = '123456789012';
+    for( let j = 13; j <= 16; j++ ){
+      lengthPad += '0';
+      (function(i, lengthPad){
+        it('has a prefix of ' + i + ' and a length of ' + (3 + j), function(){
+          detectNetwork(i + lengthPad).should.equal('China UnionPay');
+        })(i, lengthPad);
+      })
+    }
+  }
+
+  for( let i = 6282; i <= 6288; i++ ){
+    let lengthPad = '12345678901';
+    for( let j = 12; j <= 15; j++ ){
+      lengthPad += '0';
+      (function(i, lengthPad){
+        it('has a prefix of ' + i + ' and a length of ' + (4 + j), function(){
+          detectNetwork(i + lengthPad).should.equal('China UnionPay');
+        })(i, lengthPad);
+      })
+    }
+  }
+
+}
+describe('should support Switch'){
+  // Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
+  // Heads up! Switch and Visa seem to have some overlapping card numbers - in any apparent conflict, you should choose the network with the longer prefix.
+
+}
