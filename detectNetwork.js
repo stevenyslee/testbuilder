@@ -17,6 +17,7 @@ var detectNetwork = function(cardNumber) {
   let firstTwoChar = cardNumber.slice(0, 2);
   let firstThreeChar = cardNumber.slice(0, 3);
   let firstFourChar = cardNumber.slice(0, 4);
+  let firstSixChar = cardNumber.slice(0, 6);
 
   //Diner's Club
   if( (firstTwoChar === '38' && cardNumber.length === 14) || (firstTwoChar === '39' && cardNumber.length === 14) ){
@@ -43,6 +44,10 @@ var detectNetwork = function(cardNumber) {
 	}
 	if( (firstFourChar === '5018' || firstFourChar === '5020' || firstFourChar === '5038' || firstFourChar === '6304') && ( cardNumber.length >= 12 && cardNumber.length <= 19) ){
 		return 'Maestro';
+	}
+// China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
+	if( ((firstSixChar >= 622126 && firstSixChar <= 622925) || (firstThreeChar >= 624 && firstThreeChar <= 626) || (firstFourChar >= 6282 && firstFourChar <= 6288)) && (cardNumber.length >= 16 && cardNumber.length <= 19) ){
+		return "China UnionPay";
 	}
 };
 
