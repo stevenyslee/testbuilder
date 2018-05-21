@@ -347,4 +347,5 @@ describe('should support Switch',function(){
   it('has a prefix of 6759 and a length of 19', function(){
     detectNetwork('6759012345678901234').should.equal('Switch');
   });
+  
 });
