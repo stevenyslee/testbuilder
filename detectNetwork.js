@@ -27,13 +27,19 @@ var detectNetwork = function(cardNumber) {
   if( (firstTwoChar === '34' && cardNumber.length === 15) || (firstTwoChar === '37' && cardNumber.length === 15) ){
   	return "American Express";
   }
-//   Visa always has a prefix of 4 and a length of 13, 16, or 19.
-// MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
-	//Visa
-	if( (firstChar === '4') && (cardNumber.length === 13 || cardNumber.length === 16 || cardNumber.length === 19) ){
-  	return "Visa";
+
+// Visa always has a prefix of 4 and a length of 13, 16, or 19.
+// Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
+// Heads up! Switch and Visa seem to have some overlapping card numbers - in any apparent conflict, you should choose the network with the longer prefix.
+  if( firstChar === '4' ){
+  	if( (firstFourChar === '4903' || firstFourChar === '4905' || firstFourChar === '4935' || firstSixChar === '564182' || firstSixChar === '633110' || firstFourChar === '6333' || firstFourChar === '6759') && (cardNumber.length === 16 || cardNumber.length === 18 || cardNumber.length === 19) ){
+  		return "Switch";
+  	} else if( cardNumber.length === 13 || cardNumber.length === 16 || cardNumber.length === 19 ){
+  		return "Visa";
+  	}
   }
-  //MasterCard
+
+// MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
   if( (firstTwoChar === '51' || firstTwoChar === '52' || firstTwoChar === '53' || firstTwoChar === '54' || firstTwoChar === '55') && (cardNumber.length === 16) ){
   	return "MasterCard";
   }
@@ -49,6 +55,7 @@ var detectNetwork = function(cardNumber) {
 	if( ((firstSixChar >= 622126 && firstSixChar <= 622925) || (firstThreeChar >= 624 && firstThreeChar <= 626) || (firstFourChar >= 6282 && firstFourChar <= 6288)) && (cardNumber.length >= 16 && cardNumber.length <= 19) ){
 		return "China UnionPay";
 	}
+
 };
 
 
