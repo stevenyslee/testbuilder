@@ -205,7 +205,7 @@ describe('Maestro', function() {
 
 
 
-describe('should support China UnionPay',function(){
+describe('China UnionPay',function(){
   var should = chai.should();
 
   // China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
