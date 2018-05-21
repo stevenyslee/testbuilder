@@ -211,52 +211,40 @@ describe('China UnionPay',function(){
   // China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
   for( let i = 622126; i <= 622925; i++ ){
     let lengthPad = '123456789';
-
     for( let j = 10; j <= 13; j++ ){
       lengthPad += '0';
-
       (function(i, lengthPad){
-
         it('has a prefix of ' + i + ' and a length of ' + (6 + j), function(){
           detectNetwork(i + lengthPad).should.equal('China UnionPay');
         });
-
       })(i, lengthPad);
-
     }
-
   }
 
   for( let i = 624; i <= 626; i++ ){
     let lengthPad = '123456789012';
-
     for( let j = 13; j <= 16; j++ ){
       lengthPad += '0';
-
       (function(i, lengthPad){
-
         it('has a prefix of ' + i + ' and a length of ' + (3 + j), function(){
           detectNetwork(i + lengthPad).should.equal('China UnionPay');
         });
-
       })(i, lengthPad);
-
     }
-
   }
 
 
-  // for( let i = 6282; i <= 6288; i++ ){
-  //   let lengthPad = '12345678901';
-  //   for( let j = 12; j <= 15; j++ ){
-  //     lengthPad += '0';
-  //     (function(i, lengthPad){
-  //       it('has a prefix of ' + i + ' and a length of ' + (4 + j), function(){
-  //         detectNetwork(i + lengthPad).should.equal('China UnionPay');
-  //       });
-  //     })(i, lengthPad);
-  //   }
-  // }
+  for( let i = 6282; i <= 6288; i++ ){
+    let lengthPad = '12345678901';
+    for( let j = 12; j <= 15; j++ ){
+      lengthPad += '0';
+      (function(i, lengthPad){
+        it('has a prefix of ' + i + ' and a length of ' + (4 + j), function(){
+          detectNetwork(i + lengthPad).should.equal('China UnionPay');
+        });
+      })(i, lengthPad);
+    }
+  }
 
 });
 describe('should support Switch',function(){  
