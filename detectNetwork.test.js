@@ -247,7 +247,7 @@ describe('China UnionPay',function(){
   }
 
 });
-describe('should support Switch',function(){  
+describe('Switch',function(){  
   // Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
   // Heads up! Switch and Visa seem to have some overlapping card numbers - in any apparent conflict, you should choose the network with the longer prefix.
   var should = chai.should();
@@ -347,5 +347,5 @@ describe('should support Switch',function(){
   it('has a prefix of 6759 and a length of 19', function(){
     detectNetwork('6759012345678901234').should.equal('Switch');
   });
-  
+
 });
