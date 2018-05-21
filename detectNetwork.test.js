@@ -17,10 +17,6 @@ describe('Introduction to Mocha Tests - READ ME FIRST', function() {
   // Once you've read and understood this section, please comment it out. 
   // You will not be able to proceed with a failing test. 
 
-  // it('Throws an error so it fails', function() {
-  //   throw new Error('Delete me!');
-  // });
-
   it('Doesn\'t throw an error, so it doesn\'t fail', function() {
     // This test doesn't really test anything at all! It will pass no matter what.
     var even = function(num){
@@ -140,7 +136,6 @@ describe('MasterCard', function() {
 describe('Discover', function() {
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
-  // Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
   var should = chai.should();
 
   it('has a prefix of 65 and a length of 16', function(){
@@ -175,8 +170,6 @@ describe('Discover', function() {
 
 describe('Maestro', function() {
   let lengthPad = '';
-  // Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
-  // console.log('test Maestro');
 
   for (let i = 0; i <= 7; i++ ) {
     lengthPad += i;
@@ -208,7 +201,6 @@ describe('Maestro', function() {
 describe('China UnionPay',function(){
   var should = chai.should();
 
-  // China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
   for( let i = 622126; i <= 622925; i++ ){
     let lengthPad = '123456789';
     for( let j = 10; j <= 13; j++ ){
@@ -248,8 +240,6 @@ describe('China UnionPay',function(){
 
 });
 describe('Switch',function(){  
-  // Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
-  // Heads up! Switch and Visa seem to have some overlapping card numbers - in any apparent conflict, you should choose the network with the longer prefix.
   var should = chai.should();
 
   it('has a prefix of 4903 and a length of 16', function(){

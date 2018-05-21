@@ -19,18 +19,14 @@ var detectNetwork = function(cardNumber) {
   let firstFourChar = cardNumber.slice(0, 4);
   let firstSixChar = cardNumber.slice(0, 6);
 
-  //Diner's Club
   if( (firstTwoChar === '38' && cardNumber.length === 14) || (firstTwoChar === '39' && cardNumber.length === 14) ){
   	return "Diner's Club";
   }
-  //American Express
+
   if( (firstTwoChar === '34' && cardNumber.length === 15) || (firstTwoChar === '37' && cardNumber.length === 15) ){
   	return "American Express";
   }
 
-// Visa always has a prefix of 4 and a length of 13, 16, or 19.
-// Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
-// Heads up! Switch and Visa seem to have some overlapping card numbers - in any apparent conflict, you should choose the network with the longer prefix.
   if( firstChar === '4' ){
   	if( (firstFourChar === '4903' || firstFourChar === '4905' || firstFourChar === '4911' || firstFourChar === '4936') && (cardNumber.length === 16 || cardNumber.length === 18 || cardNumber.length === 19) ){
   		return "Switch";
@@ -44,23 +40,21 @@ var detectNetwork = function(cardNumber) {
 		return "Switch";
 	}
 
-// MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
   if( (firstTwoChar === '51' || firstTwoChar === '52' || firstTwoChar === '53' || firstTwoChar === '54' || firstTwoChar === '55') && (cardNumber.length === 16) ){
   	return "MasterCard";
   }
-// Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
-// Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
+
 	if( (firstFourChar === '6011' || firstThreeChar === '644' || firstThreeChar === '645' || firstThreeChar === '646' || firstThreeChar === '647' || firstThreeChar === '648' || firstThreeChar === '649' || firstTwoChar === '65') && (cardNumber.length === 16 || cardNumber.length === 19) ){
 		return "Discover";
 	}
+
 	if( (firstFourChar === '5018' || firstFourChar === '5020' || firstFourChar === '5038' || firstFourChar === '6304') && ( cardNumber.length >= 12 && cardNumber.length <= 19) ){
 		return 'Maestro';
 	}
-// China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
+
 	if( ((firstSixChar >= 622126 && firstSixChar <= 622925) || (firstThreeChar >= 624 && firstThreeChar <= 626) || (firstFourChar >= 6282 && firstFourChar <= 6288)) && (cardNumber.length >= 16 && cardNumber.length <= 19) ){
 		return "China UnionPay";
 	}
-
 };
 
 
